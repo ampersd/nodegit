@@ -158,6 +158,9 @@
           "return": {
             "isErrorCode": true
           }
+        },
+        "git_apply_options_init": {
+          "ignore": true
         }
       }
     },
@@ -1667,6 +1670,20 @@
           "return": {
             "isResultOrError": true
           }
+        },
+        "git_graph_reachable_from_any": {
+          "args": {
+            "descendant_array": {
+              "cType": "git_oid *",
+              "cppClassName": "Array",
+              "jsClassName": "Array",
+              "arrayElementCppClassName": "GitOid"
+            }
+          },
+          "isAsync": true,
+          "return": {
+            "isResultOrError": true
+          }
         }
       }
     },
@@ -3091,6 +3108,57 @@
         }
       }
     },
+    "rebase_options": {
+      "fields": {
+        "signing_cb": {
+          "ignore": true
+        },
+        "commit_create_cb": {
+          "args": [
+            {
+              "name": "out",
+              "cType": "git_oid *"
+            },
+            {
+              "name": "author",
+              "cType": "const git_signature *"
+            },
+            {
+              "name": "committer",
+              "cType": "const git_signature *"
+            },
+            {
+              "name": "message_encoding",
+              "cType": "const char *"
+            },
+            {
+              "name": "message",
+              "cType": "const char *"
+            },
+            {
+              "name": "tree",
+              "cType": "const git_tree *"
+            },
+            {
+              "name": "parent_count",
+              "cType": "size_t"
+            },
+            {
+              "name": "parents",
+              "cType": "const git_oid **",
+              "cppClassName": "Array",
+              "jsClassName": "Array",
+              "arrayElementCppClassName": "GitOid",
+              "arrayLengthArgumentName": "parent_count"
+            },
+            {
+              "name": "payload",
+              "cType": "void *"
+            }
+          ]
+        }
+      }
+    },
     "refdb": {
       "selfFreeing": true,
       "functions": {
@@ -3334,6 +3402,12 @@
             "isErrorCode": true
           }
         },
+        "git_remote_connect_ext": {
+          "isAsync": true
+        },
+        "git_remote_connect_options_init": {
+          "ignore": true
+        },
         "git_remote_disconnect": {
           "isAsync": true,
           "return": {
@@ -3531,6 +3605,11 @@
         }
       }
     },
+    "remote_connect_options": {
+      "dependencies": [
+        "../include/str_array_converter.h"
+      ]
+    },
     "remote_callbacks": {
       "fields": {
         "completion": {
@@ -3621,9 +3700,6 @@
             }
           },
           "isAsync": false
-        },
-        "git_repository_init_init_options": {
-          "ignore": true
         },
         "git_repository_init_options_init": {
           "ignore": true
